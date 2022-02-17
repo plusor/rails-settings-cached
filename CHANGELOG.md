@@ -31,7 +31,7 @@ ActiveRecord::RecordInvalid: (Validation failed: Default locale is not included 
 - Add `validates` options to special the Rails Validation for fields (#201)
 
 ```rb
-class Setting < RailsSettings::Base
+class Setting < RailsSettingsCache::Base
   # cache_prefix { "v1" }
   field :app_name, default: "Rails Settings", validates: { presence: true, length: { in: 2..20 } }
   field :default_locale, default: "zh-CN", validates: { presence: true, inclusion: { in: %w[zh-CN en jp], message: "is not included in [zh-CN, en, jp]" } }
@@ -111,7 +111,7 @@ Setting.get_field(:admin_emails)
   For example:
 
   ```rb
-  class Setting < RailsSettings::Base
+  class Setting < RailsSettingsCache::Base
     field :tips, type: :array, separator: /[\n]+/
     field :keywords, type: :array, separator: ","
   end
@@ -128,7 +128,7 @@ Setting.get_field(:admin_emails)
 > But you must read the README.md again, and follow guides to change your Setting model.
 
 - New design release.
-- No more `scope` support (RailsSettings::Extend has removed);
+- No more `scope` support (RailsSettingsCache::Extend has removed);
 - No more YAML file.
 - Requuire Ruby 2.5+, Rails 5.0+
 - You must use `field` method to statement the setting keys before use.
@@ -136,7 +136,7 @@ Setting.get_field(:admin_emails)
   For example:
 
   ```rb
-  class Setting < RailsSettings::Base
+  class Setting < RailsSettingsCache::Base
     field :host, default: "http://example.com"
     field :readonly_item, type: :integer, default: 100, readonly: true
     field :user_limits, type: :integer, default: 1

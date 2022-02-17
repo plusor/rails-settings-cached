@@ -27,14 +27,14 @@ class BaseTest < ActiveSupport::TestCase
   end
 
   test "define setting with protected keys" do
-    assert_raise(RailsSettings::ProtectedKeyError, "Can't use var as setting key.") do
-      class NewSetting < RailsSettings::Base
+    assert_raise(RailsSettingsCache::ProtectedKeyError, "Can't use var as setting key.") do
+      class NewSetting < RailsSettingsCache::Base
         field :var
       end
     end
 
-    assert_raise(RailsSettings::ProtectedKeyError, "Can't use value as setting key.") do
-      class NewSetting < RailsSettings::Base
+    assert_raise(RailsSettingsCache::ProtectedKeyError, "Can't use value as setting key.") do
+      class NewSetting < RailsSettingsCache::Base
         field :value
       end
     end

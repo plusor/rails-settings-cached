@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module RailsSettings
+module RailsSettingsCache
   class ProtectedKeyError < RuntimeError
     def initialize(key)
       super("Can't use #{key} as setting key.")

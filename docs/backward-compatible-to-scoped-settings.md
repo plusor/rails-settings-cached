@@ -4,7 +4,7 @@ The old `Scoped Settings` implement:
 
 ```rb
 class User < ApplicationRecord
-  include RailsSettings::Extend
+  include RailsSettingsCache::Extend
 end
 
 @user.settings.color = "red"

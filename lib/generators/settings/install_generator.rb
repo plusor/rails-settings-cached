@@ -3,9 +3,9 @@
 require "rails/generators"
 require "rails/generators/migration"
 
-module RailsSettings
+module RailsSettingsCache
   class InstallGenerator < Rails::Generators::NamedBase
-    namespace "settings:install"
+    namespace "settings:cache:install"
     desc "Generate RailsSettings files."
     include Rails::Generators::Migration
 

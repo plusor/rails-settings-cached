@@ -1,13 +1,13 @@
-module RailsSettings
+module RailsSettingsCache
   class Middleware
     def initialize(app)
       @app = app
     end
 
     def call(env)
-      RailsSettings::RequestCache.enable!
+      RailsSettingsCache::RequestCache.enable!
       result = @app.call(env)
-      RailsSettings::RequestCache.disable!
+      RailsSettingsCache::RequestCache.disable!
       result
     end
   end

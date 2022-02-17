@@ -17,16 +17,16 @@ $ bundle add rails-settings-cached
 Generate your settings:
 
 ```bash
-$ rails g settings:install
+$ rails g settings:cache:install
 
 # Or use a custom name:
-$ rails g settings:install AppConfig
+$ rails g settings:cache:install AppConfig
 ```
 
 You will get `app/models/setting.rb`
 
 ```rb
-class Setting < RailsSettings::Base
+class Setting < RailsSettingsCache::Base
   # cache_prefix { "v1" }
 
   scope :application do
@@ -179,7 +179,7 @@ editable_fields = Setting.defined_fields
 You can use `validates` options to special the [Rails Validation](https://api.rubyonrails.org/classes/ActiveModel/Validations/ClassMethods.html#method-i-validates) for fields.
 
 ```rb
-class Setting < RailsSettings::Base
+class Setting < RailsSettingsCache::Base
   # cache_prefix { "v1" }
   field :app_name, default: "Rails Settings", validates: { presence: true, length: { in: 2..20 } }
   field :default_locale, default: "zh-CN", validates: { presence: true, inclusion: { in: %w[zh-CN en jp], message: "is not included in [zh-CN, en, jp]" } }
@@ -236,7 +236,7 @@ end
 ```
 
 ```rb
-class Setting < RailsSettings::Base
+class Setting < RailsSettingsCache::Base
   field :omniauth_google_client_id, default: ENV["OMNIAUTH_GOOGLE_CLIENT_ID"]
   field :omniauth_google_client_secret, default: ENV["OMNIAUTH_GOOGLE_CLIENT_SECRET"]
 end
@@ -255,7 +255,7 @@ If you want do that do that, the setting field must has `readonly: true`.
 For example:
 
 ```rb
-class Setting < RailsSettings::Base
+class Setting < RailsSettingsCache::Base
   field :mailer_provider, default: (ENV["mailer_provider"] || "smtp"), readonly: true
   field :mailer_options, type: :hash, readonly: true, default: {
     address: ENV["mailer_options.address"],
@@ -304,7 +304,7 @@ Each key update will expire the cache, so do not add some frequent update key.
 Some times you may need to force update cache, now you can use `cache_prefix`
 
 ```ruby
-class Setting < RailsSettings::Base
+class Setting < RailsSettingsCache::Base
   cache_prefix { "you-prefix" }
   ...
 end

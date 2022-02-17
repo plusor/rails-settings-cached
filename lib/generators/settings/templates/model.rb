@@ -1,5 +1,5 @@
 # RailsSettings Model
-class <%= class_name %> < RailsSettings::Base
+class <%= class_name %> < RailsSettingsCache::Base
   cache_prefix { "v1" }
 
   # Define your fields

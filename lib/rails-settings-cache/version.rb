@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module RailsSettings
+module RailsSettingsCache
   class << self
     def version
       "2.8.2"

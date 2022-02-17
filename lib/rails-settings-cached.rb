@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require_relative "rails-settings/base"
-require_relative "rails-settings/request_cache"
-require_relative "rails-settings/middleware"
-require_relative "rails-settings/railtie"
-require_relative "rails-settings/version"
+require_relative "rails-settings-cache/base"
+require_relative "rails-settings-cache/request_cache"
+require_relative "rails-settings-cache/middleware"
+require_relative "rails-settings-cache/railtie"
+require_relative "rails-settings-cache/version"
 
-module RailsSettings
+module RailsSettingsCache
 end

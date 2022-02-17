@@ -1,4 +1,4 @@
-module RailsSettings
+module RailsSettingsCache
   module RequestCacheGetter
     extend ActiveSupport::Concern
 
